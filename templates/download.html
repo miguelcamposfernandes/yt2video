@@ -1,0 +1,76 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h2 class="mt-3 text-center">Youtube Video Downloader</h2>
+    <div class="mt-2 text-center">
+      Convert and download all YouTube videos to high quality .mp4 files, by just inputting the url.
+    </div>
+    <form method="POST" action="{{ url_for('download_video') }}">
+        <div class="card my-4 mx-auto" style="max-width: 1300px;">
+            <div class="row no-gutters">
+              <div class="col-md-4">
+                <img src="{{url.thumbnail_url}}" class="card-img" alt="...">
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">{{ url.title }}</h5>
+                  <p class="card-text">
+                    <div class="col-md-5">
+                      <select name="itag" class="form-select input-sm" aria-label="Default select example">
+                          {% for i in url.streams.filter(progressive=True) %}
+                              <option value="{{ i.itag }}"> {{ i.resolution }} </option>
+                          {% endfor %}
+                      </select>
+                    </div>
+                    <button type="submit" class="btn btn-danger mt-3" id = "download_btn">
+                      Download
+                    </button>
+                    <button class="btn btn-danger mt-3" type="button" style="display: none" id = "loading_btn" disabled>
+                      <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                      Loading...
+                    </button>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+    </form>
+
+    <h2 class="mt-5 text-center">About our service</h2>
+    <div class="mt-4">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card shadow p-3 border-0">
+                    <img src="{{ url_for('static', filename = 'img/004-fast-time.svg')}}" class="card-img-top" alt="..." height="300">
+                    <div class="card-body">
+                      <h5 class="card-title">Quick and easy to use</h5>
+                      <p class="card-text">
+                          We structured our YouTube video downloader, so it's straightfoward and simple to use. All you've to do is give us the video URL, select the resolution and hit the download button!
+                      </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow p-3 border-0">
+                    <img src="{{ url_for('static', filename = 'img/003-insurance.svg')}}" class="card-img-top" alt="..." height="300">
+                    <div class="card-body">
+                      <h5 class="card-title">Completely risk-free</h5>
+                      <p class="card-text">
+                          It's understandle that you might not feel completely safe downloading files from a foreign website. But, we offer you a 100% smooth and secure experience!
+                      </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card shadow p-3 border-0">
+                    <img src="{{ url_for('static', filename = 'img/001-forever.svg')}}" class="card-img-top" alt="..." height="300">
+                    <div class="card-body">
+                      <h5 class="card-title">Free & unlimited usage</h5>
+                      <p class="card-text">
+                          We provide an entirely free and unlimited usage of our service. In order to keep all our servers running, we need show a little advertisement. Hope you don't mind!
+                      </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

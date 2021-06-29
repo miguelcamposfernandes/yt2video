@@ -8,13 +8,17 @@
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     
-    <title>Brisk Converter</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename = 'icon.svg')}}"/>
+
+    <title>Youtube Video Downloader - YT2Video</title>
   </head>
   <body>
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">
-            Brisk Converter
+          <img src="{{ url_for('static', filename = 'icon.svg')}}" alt="" width="40" height="30" class="d-inline-block align-text-top">
+
+            YT2Video
           </a>
         </div>
     </nav>
